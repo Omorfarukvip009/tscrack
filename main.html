@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRACKED BY MD OMOR FARUK</title>
+
+<style>
+html, body{
+  margin:0;
+  padding:0;
+  height:100%;
+  font-family: Arial, sans-serif;
+  background:#0f172a;
+  color:#fff;
+  overflow:hidden;
+}
+
+#loginBox{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+}
+
+.login-card{
+  background:#020617;
+  padding:25px;
+  border-radius:16px;
+  width:90%;
+  max-width:400px;
+  box-shadow:0 0 20px rgba(0,255,255,0.2);
+  text-align:center;
+}
+
+.login-card h2{
+  font-size:28px;
+  margin-bottom:20px;
+  background: linear-gradient(90deg, #38bdf8, #0ff, #3b82f6, #38bdf8);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s ease infinite;
+}
+
+@keyframes shimmer {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+input{
+  width:100%;
+  padding:14px;
+  margin-bottom:20px;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+  color:#fff;
+}
+
+input:focus{
+  outline:none;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+  background: linear-gradient(270deg, #38bdf8, #0ff, #3b82f6, #38bdf8);
+  background-size: 400% 400%;
+  color:#000;
+  animation: shimmerBtn 4s ease infinite;
+}
+
+button:hover{
+  transform: scale(1.05);
+}
+
+@keyframes shimmerBtn{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+#panel{
+  display:none;
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+#timer{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:rgba(2,6,23,0.8);
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:14px;
+  z-index:10;
+}
+</style>
+
+<!-- Firebase v8 -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+/* 🔥 YOUR FIREBASE CONFIG (FROM YOUR FILE) */
+firebase.initializeApp({
+  apiKey: "AIzaSyDsUB-jClbtcLopO6Q6o8CwRRYQjkj1G-A",
+  authDomain: "omor-12af2.firebaseapp.com",
+  databaseURL: "https://omor-12af2-default-rtdb.firebaseio.com",
+  projectId: "omor-12af2",
+  storageBucket: "omor-12af2.appspot.com"
+});
+
+/* 🔑 DATABASE PATH */
+const db = firebase.database().ref("YOU88888888");
+
+/* Disable inspect tricks */
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("selectstart", e => e.preventDefault());
+
+let expireTimer = null;
+
+function login(){
+  const key = document.getElementById("password").value.trim();
+  if(!key){ alert("Enter Access Key"); return; }
+
+  db.child(key).once("value", snap => {
+    if(!snap.exists()){
+      alert("❌ Invalid Key");
+      return;
+    }
+
+    const data = snap.val();
+    const now = Date.now();
+
+    if(!data.isActive){
+      alert("❌ Key Blocked");
+      return;
+    }
+
+    if(data.expiresAt <= now){
+      alert("❌ Key Expired");
+      return;
+    }
+
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("panel").style.display = "block";
+    startSession(data.expiresAt);
+  });
+}
+
+function startSession(expireTime){
+  updateTimer(expireTime);
+  expireTimer = setInterval(() => {
+    updateTimer(expireTime);
+    if(Date.now() >= expireTime){
+      autoLogout();
+    }
+  }, 1000);
+}
+
+function updateTimer(expireTime){
+  const left = expireTime - Date.now();
+  const sec = Math.max(0, Math.floor(left / 1000));
+  document.getElementById("timeLeft").innerText = sec + "s";
+}
+
+function autoLogout(){
+  clearInterval(expireTimer);
+  alert("⏱️ Time Expired! Auto Logout");
+  location.reload();
+}
+</script>
+</head>
+
+<body>
+
+<div id="loginBox">
+  <div class="login-card">
+    <h2>CRACKED BY MD OMOR FARUK</h2>
+    <input type="password" id="password" placeholder="Enter Access Key">
+    <button onclick="login()">LOGIN</button>
+  </div>
+</div>
+
+<div id="panel">
+  <div id="timer">⏳ <span id="timeLeft"></span></div>
+  <iframe 
+    src="https://rawcdn.githack.com/tosibtx-stack/tosib_vip/09b6cf0fe60adca42b1cbbe79625450b6b8b0f18/TOSIB%20VIP%20ha@k.html"
+    allowfullscreen>
+  </iframe>
+</div>
+
+</body>
+</html>
